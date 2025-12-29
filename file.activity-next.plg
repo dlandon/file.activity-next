@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2025.12.27">
+<!ENTITY version	"2025.12.29">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"da3c0ee9efc88c001afa47d67336c941">
+<!ENTITY MD5		"a3be777407e43df9d2d4742dedc737d3">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,10 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Inotify FIFO error terminating inotify.
+- Fix: Inotify.file.activity script does not terminate properly when there is an inotify error.
+
+###2025.12.27
 - Fix: Do not start file activity if the array is not running.
 - Fix: Some fixes and code refactors.
 - Fix: Inotify include and exlude fixes for proper inotify operation.
