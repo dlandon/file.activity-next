@@ -1,4 +1,4 @@
-Copyright (c) 2017–2025 Dan Landon. All rights reserved.
+Copyright (c) 2017–2026 Dan Landon. All rights reserved.
 
 Permission is granted to use this software for personal, educational, and internal use only.
 
