@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.01.13">
+<!ENTITY version	"2026.01.13a">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"1fc7d633fc13207e541a6726411bff60">
+<!ENTITY MD5		"674e52a2cb2bd445fe9c8b559aab6a90">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Update chack for file activity next.
+
+###2026.01.13a
 - Add: Mark deleted files as 'DELETE_RECYCLED' when recycled by the Recycle Bin, and 'DELETE_RAW' when deleted and not added to the Recycle Bin.  This can help understand if the Recycle Bin is working.
 - Add: List of Disks and Pools being monitored on the Settings page.
 - Add: Filter switch to show only today's activity on 'Share Activity' and 'Disk and Pool Activity' pages.
