@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2025.12.29">
+<!ENTITY version	"2026.01.13">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"a3be777407e43df9d2d4742dedc737d3">
+<!ENTITY MD5		"1fc7d633fc13207e541a6726411bff60">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,11 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Add: Mark deleted files as 'DELETE_RECYCLED' when recycled by the Recycle Bin, and 'DELETE_RAW' when deleted and not added to the Recycle Bin.  This can help understand if the Recycle Bin is working.
+- Add: List of Disks and Pools being monitored on the Settings page.
+- Add: Filter switch to show only today's activity on 'Share Activity' and 'Disk and Pool Activity' pages.
+
+###2025.12.29
 - Fix: Inotify FIFO error terminating inotify.
 - Fix: Inotify.file.activity script does not terminate properly when there is an inotify error.
 
@@ -41,7 +46,7 @@
 </CHANGES>
 
 <!--
-Copyright 2017-2025 Dan Landon
+Copyright 2017-2026 Dan Landon
 This is the webGUI plugin to view disk file activity.
 
 Permission is granted to use this software for personal, educational, or internal use only.
@@ -141,7 +146,7 @@ mkdir /tmp/&plugin; 2>/dev/null
 echo ""
 echo "-----------------------------------------------------------"
 echo " &name; is installed."
-echo " Copyright 2017-2025, &author;"
+echo " Copyright 2017-2026, &author;"
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
