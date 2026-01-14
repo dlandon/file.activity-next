@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.01.13a">
+<!ENTITY version	"2026.01.14">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"674e52a2cb2bd445fe9c8b559aab6a90">
+<!ENTITY MD5		"458099a1fea80bfe8f8f6e754c3420cb">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,7 +24,10 @@
 <CHANGES>
 ##&name;
 ###&version;
-- Fix: Update chack for file activity next.
+- Fix: Reversion that broke logging.
+
+###2025.01.13a
+- Fix: Update check for file activity next.
 
 ###2026.01.13a
 - Add: Mark deleted files as 'DELETE_RECYCLED' when recycled by the Recycle Bin, and 'DELETE_RAW' when deleted and not added to the Recycle Bin.  This can help understand if the Recycle Bin is working.
