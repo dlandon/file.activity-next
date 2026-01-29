@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.01.14">
+<!ENTITY version	"2026.01.29">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"458099a1fea80bfe8f8f6e754c3420cb">
+<!ENTITY MD5		"c80ad71332fcbae0d93a6c0fde1af70e">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,10 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Cache and Pools not showing in Share file activity.
+- Fix: Rework fifo handling and check for enough watches in inotify.file.activity script.
+
+###2025.01.14
 - Fix: Reversion that broke logging.
 
 ###2025.01.13a
@@ -100,6 +104,8 @@ if [ -x "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" ]; then
 	#
 	# Restart file activity if it is enabled and currently running.
 	#
+	echo "Restarting File Activity..."
+
 	/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin; update 2>/dev/null
 fi
 
