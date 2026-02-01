@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.01.29">
+<!ENTITY version	"2026.02.01">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"c80ad71332fcbae0d93a6c0fde1af70e">
+<!ENTITY MD5		"859cd61ca9f467087e9885b7b53756f6">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Today filter not working properly with zero padded days.
+
+###2026.01.29
 - Fix: Cache and Pools not showing in Share file activity.
 - Fix: Rework fifo handling and check for enough watches in inotify.file.activity script.
 
