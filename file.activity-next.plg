@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.02.01">
+<!ENTITY version	"2026.02.02">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"859cd61ca9f467087e9885b7b53756f6">
+<!ENTITY MD5		"7614929ed4e3a0c6774f5fdefacc5314">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Excluded shares not being excluded properly.
+
+2026.02.01
 - Fix: Today filter not working properly with zero padded days.
 
 ###2026.01.29
