@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.02.02">
+<!ENTITY version	"2026.02.13">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"7614929ed4e3a0c6774f5fdefacc5314">
+<!ENTITY MD5		"0b9c4d7dd5cc92b843ef0504e9f3f7f2">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,9 +24,14 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Change log date format to not zero fill the day.
+- Fix: More changes to make inotifywait more robust.
+- Add: Show the excluded shares on the file activity settings page.
+
+###2026.02.02
 - Fix: Excluded shares not being excluded properly.
 
-2026.02.01
+###2026.02.01
 - Fix: Today filter not working properly with zero padded days.
 
 ###2026.01.29
