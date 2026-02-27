@@ -1,9 +1,9 @@
-Copyright (c) 2017–2026 Dan Landon. All rights reserved.
+Copyright (c) 2017-2026 Dan Landon. All rights reserved.
 
 Permission is granted to use this software for personal, educational, and internal use only.
 
-Any other use — including but not limited to commercial use, public distribution, sublicensing,
-or creation of modified or derivative versions — is strictly prohibited without prior written
+Any other use - including but not limited to commercial use, public distribution, sublicensing,
+or creation of modified or derivative versions - is strictly prohibited without prior written
 permission from the copyright holder.
 
 All versions of this software released publicly under the GPL prior remain licensed
