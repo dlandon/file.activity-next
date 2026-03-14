@@ -8,11 +8,12 @@ To install this plugin manually, enter either of the URLs below in the Enter URL
 
 ### Latest version:
 
-Copy the URL below exactly as shown:
+Copy the URL exactly as shown:
 https://raw.githubusercontent.com/dlandon/file.activity-next/master/file.activity-next.plg
 
 ### Specific version:
-Copy the URL below exactly as shown:
+
+Copy the URL exactly as shown:
 https://raw.githubusercontent.com/dlandon/file.activity-next/vYYYY.MM.DD/file.activity-next.plg
 
 Enter the release date "YYYY.MM.DD" of the specific version you want to install.  Be sure to keep the "v" before the release date.
