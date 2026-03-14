@@ -2,9 +2,11 @@
 
 This plugin displays recent write/modify file activity on array disks, UD disks, and the pools in the Array.  It can help to understand why disks are spinning up from write/modify file activity.
 
+For support, feature requests, and discussions, please use the Discussions tab.
+
 ### Installing File Activity - Next
 
-To install this plugin manually, enter either of the URLs below in the Enter URL field of the Plugins page.  The URL below will either install the latest or a specific version you choose.
+To install this plugin manually, enter either of the URLs below in the **Enter URL** field of the Plugins page.  The URL below will either install the latest or a specific version you choose.
 
 ### Latest version:
 
