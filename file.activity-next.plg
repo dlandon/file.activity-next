@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.02.13">
+<!ENTITY version	"2026.03.22">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"0b9c4d7dd5cc92b843ef0504e9f3f7f2">
+<!ENTITY MD5		"ba1b8aa115b7ae59eeac7d2650ac3ae0">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,14 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Align plugin name with other Next plugins.
+- Fix: Shares with spaces are not excluded properly.
+- Fix: Improve inotify error reporting and refactor for robustness.
+- Fix: Stop and start when plugin is installed and updated.
+- Add: Integrate with UD to restart file activity when UD disks are mounted/unmounted to adjust for changes.
+- Add: Display what UD devices are being monitored by file activity on the settings page.
+
+###2026.02.13
 - Fix: Change log date format to not zero fill the day.
 - Fix: More changes to make inotifywait more robust.
 - Add: Show the excluded shares on the file activity settings page.
@@ -60,7 +68,7 @@
 - Fix: Default max log lines to 5000 and not 2000.
 
 ###12.05.2025
-- First release as File Activity (Next).
+- First release as File Activity - Next.
 
 ###2025.12.05
 - Initial release.
@@ -101,7 +109,7 @@ echo ""
 echo " The previous File Activity plugin is installed."
 echo ""
 echo " You must uninstall the File Activity plugin"
-echo " before installing File Activity (Next)."
+echo " before installing File Activity - Next."
 echo ""
 echo "-----------------------------------------------------------"
 echo ""
@@ -109,16 +117,11 @@ exit 1
 fi
 
 #
-# Stop File Activity inotify if it is running.
+# Stop file activity if it is running.
 #
-if [ -x "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" ]; then
-	#
-	# Restart file activity if it is enabled and currently running.
-	#
-	echo "Restarting File Activity..."
+echo "Stopping File Activity..."
 
-	/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin; update 2>/dev/null
-fi
+/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin; stop 2>/dev/null
 
 #
 # Remove emhttp files so we can re-install.
@@ -152,6 +155,14 @@ tar -xf /boot/config/plugins/&plugin;/&name;-&version;.tgz -C /usr/local/emhttp/
 <FILE Name="/boot/config/plugins/&plugin;/&plugin;.cfg">
 <INLINE>
 <![CDATA[
+SERVICE="disable"
+INCLUDE_SSD="no"
+INCLUDE_UD="no"
+INCLUDE_CACHE="no"
+DISPLAY_EVENTS=""
+OPEN_FILE_EVENTS=""
+MAX_LINES=""
+EXCLUDE_SHARES="appdata,docker,domains,syslogs,system"
 ]]>
 </INLINE>
 </FILE>
@@ -165,6 +176,13 @@ The 'post-install' script.
 # Create disks file directory.
 #
 mkdir /tmp/&plugin; 2>/dev/null
+
+#
+# Start file activity.
+#
+echo "Starting File Activity..."
+
+at -f "/usr/local/emhttp/plugins/&plugin;/event/started" "now" 2>/dev/null
 
 echo ""
 echo "-----------------------------------------------------------"
