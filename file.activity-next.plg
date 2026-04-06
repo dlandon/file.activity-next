@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.03.22">
+<!ENTITY version	"2026.04.06">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"ba1b8aa115b7ae59eeac7d2650ac3ae0">
+<!ENTITY MD5		"10ba0f4eb39db9ab68463d7da6f77102">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,11 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Move lock files and improve lock handling in inotify.
+- Fix: Situation where logging stopped and File Activity would not start.
+- Fix: Show when File Activity is running and logging has stopped.
+
+###2016.03.22
 - Fix: Align plugin name with other Next plugins.
 - Fix: Shares with spaces are not excluded properly.
 - Fix: Improve inotify error reporting and refactor for robustness.

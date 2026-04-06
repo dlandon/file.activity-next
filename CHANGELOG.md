@@ -1,3 +1,10 @@
 # Changelog
 
-Detailed release notes are available on the GitHub Releases page.
+The **Next** series continues development of the plugin by the original author and focuses on ongoing maintenance, reliability improvements, and compatibility with current Unraid releases.
+
+Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
+
+## 2026.04.06
+
+### Fixes
+- Improved overall reliability of File Activity monitoring by addressing logging interruptions and enhancing runtime status visibility.
