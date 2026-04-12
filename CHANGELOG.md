@@ -7,4 +7,7 @@ Development of the plugin will continue with ongoing fixes, enhancements, and ma
 ## 2026.04.06
 
 ### Fixes
-- Improved overall reliability of File Activity monitoring by addressing logging interruptions and enhancing runtime status visibility.
+- Improved overall reliability of File Activity monitoring by addressing logging interruptions and enhancing runtime status visibility
+
+### Notes
+- Detailed technical changes are documented in the GitHub release notes
