@@ -4,6 +4,11 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.05.02
+
+### Fixes
+- Inotify starting issues on server boot.
+
 ## 2026.04.23
 
 ### Fixes

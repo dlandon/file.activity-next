@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.04.23">
+<!ENTITY version	"2026.05.02">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"3e6bfcadcb64869a3ef3dc8aa43419f7">
+<!ENTITY MD5		"57c769247ef7276a69fa2e501c8d2817">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,10 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Double start issue when array is first booted.
+- Fix: File Activity Inotify stops if a second startup instance is attempted.
+
+###2026.04.23
 - Fix: Reboot start up issue from var.ini file not available causing an email script error.
 - Fix: Add longer delay when booting up before starting file activity.
 
