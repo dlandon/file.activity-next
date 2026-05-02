@@ -9,7 +9,7 @@
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"57c769247ef7276a69fa2e501c8d2817">
+<!ENTITY MD5		"61bece7e0b579d9d83c1766b61bf7e7d">
 ]>
 
 <PLUGIN	name="&plugin;"
