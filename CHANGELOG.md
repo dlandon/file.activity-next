@@ -4,6 +4,12 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+
+## 2026.05.10
+
+### Fixes
+- Conflicts starting File Activity on boot.
+
 ## 2026.05.02
 
 ### Fixes
