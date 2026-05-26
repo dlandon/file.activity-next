@@ -28,4 +28,6 @@ If this plugin has been useful to you and you'd like to support ongoing developm
 
 [Donate via PayPal](https://www.paypal.com/us/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EJGPC7B5CS66E)
 
+Feedback, bug reports, and success stories are also appreciated and help guide future development.
+
 Support is appreciated, but never expected.
