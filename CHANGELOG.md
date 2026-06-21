@@ -4,16 +4,18 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.06.21
+
+### Fixes
+- File Activity inotify would on occasion fail because a folder to be monitored would go unavailable from a lot of UD unmount activity.
 
 ## 2026.06.06
 
 ### Fixes
-
 - Changed File Activity configuration updates from a full restart to a reload operation.
 - Reload requests are now queued and consolidated, with a single reload performed after 10 seconds of inactivity. This prevents excessive reload activity when plugins such as Unassigned Devices generate multiple mount and unmount events in rapid succession.
 
 ### Enhancements
-
 - Added a 30-second startup delay during system boot and plugin updates to allow the server and storage configuration to stabilize before File Activity begins monitoring file system activity.
 
 ## 2026.05.10
