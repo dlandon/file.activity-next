@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.06.21">
+<!ENTITY version	"2026.07.24">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"82b825225ab21483efb147d42d8f5c1d">
+<!ENTITY MD5		"e74fa5c5050f81ee8c9e5d2efb289830">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,16 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Do not complete a reload request if the File Activity is stopped.
+- Add: Advanced log filtering to the Share Activity and Disk Activity pages.
+- Add: "Hide attributes" option to suppress ATTRIB events.
+- Add: Support for multiple comma-separated search terms and '*'/'?' wildcards.
+- Add: Filter help text and a clear filter button.
+
+###2026.06.21
+- Fix: When changing an Unraid share, the File Activity would be started if it was not running.  It is supposed to update, but not start if stopped.
+
+###2026.06.21
 - Fix: During array shutdown, the heavy UD unmounting activity would get into a timing issue where a folder to monitor by inotify could go unavailable.  Inotify is restarted to fix this issue.
 
 ###2026.06.06
@@ -166,7 +176,7 @@ Install the plugin bundle.
 #
 # Create plugin directory
 #
-mkdir /boot/config/plugins/&plugin; 2>/dev/null
+mkdir -p /boot/config/plugins/&plugin; 2>/dev/null
 
 #
 # Install the 'bundle'.
@@ -198,7 +208,7 @@ The 'post-install' script.
 #
 # Create disks file directory.
 #
-mkdir /tmp/&plugin; 2>/dev/null
+mkdir -p /tmp/&plugin;
 
 #
 # Start file activity.

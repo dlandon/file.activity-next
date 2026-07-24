@@ -1,6 +1,8 @@
 # File Activity - Next
 
-This plugin displays recent write/modify file activity on array disks, UD disks, and the pools in the Array.  It can help to understand why disks are spinning up from write/modify file activity.
+This plugin displays recent read, write, and modify file activity on array disks, pools, Unassigned Devices, and cache devices. It can help identify what is causing disks to spin up and provides powerful filtering options to quickly locate specific file activity.
+
+The activity viewer supports filtering by multiple search terms, wildcard matching (* and ?), and exclusion filters using !, making it easy to isolate the events you're looking for.
 
 For support, feature requests, and discussions, please use the Discussions tab.
 

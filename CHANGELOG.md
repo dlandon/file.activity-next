@@ -4,6 +4,26 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.07.24
+
+### New Feature
+- Added a powerful log filter to both **Share Activity** and **Disk/Pool Activity** logs.
+  - Filter using one or more comma-separated search terms.
+  - Prefix a term with `!` to exclude matching entries.
+  - Supports `*` and `?` wildcards.
+  - Filter settings are remembered between sessions.
+
+### Improved
+- Refined the activity log interface for a cleaner, more consistent layout.
+- Improved filter controls and help text for easier log searching.
+- Enhanced responsive layout and alignment across the activity pages.
+- Reduced unnecessary page reloads by improving internal update handling.
+
+### Fixes
+- Fixed several UI alignment and display issues.
+- Improved compatibility across different Next plugins.
+- Various code cleanup and internal optimizations for improved reliability and maintainability.
+
 ## 2026.06.21
 
 ### Fixes
