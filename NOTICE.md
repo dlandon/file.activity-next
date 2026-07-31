@@ -1,5 +1,4 @@
-NOTICE
-------
+## NOTICE
 
 Project: File Activity - Next
 Author: Dan Landon
