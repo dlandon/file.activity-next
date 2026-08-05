@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.07.24">
+<!ENTITY version	"2026.08.05">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"e74fa5c5050f81ee8c9e5d2efb289830">
+<!ENTITY MD5		"42c77625e37c869cdcd788936d56b83c">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,11 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Unassigned Devices show on the Settings page in their own group.
+- Fix: Unassigned Device with spaces in the share name (Mountpoint) were not added to File Activity.
+- Fix: Unassigned Devices shares not showing correctly on the Shares page.
+
+##2026.07.24
 - Fix: Do not complete a reload request if the File Activity is stopped.
 - Add: Advanced log filtering to the Share Activity and Disk Activity pages.
 - Add: "Hide attributes" option to suppress ATTRIB events.

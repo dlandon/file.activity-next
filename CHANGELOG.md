@@ -4,6 +4,15 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.08.05
+
+This release improves support for **Unassigned Devices**, making them integrate more naturally throughout the plugin.
+
+### Improved
+- Improved how Unassigned Devices are organized and displayed in the user interface.
+- Added full support for Unassigned Device mount points that contain spaces.
+- Improved detection and presentation of Unassigned Device shares throughout the plugin for a more consistent experience.
+
 ## 2026.07.24
 
 ### New Feature
