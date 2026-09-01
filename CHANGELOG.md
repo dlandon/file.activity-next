@@ -4,6 +4,14 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.09.01
+
+This release fixes a File Activity inotify restart race condition.
+
+### Fixes
+- Improved File Activity process management to prevent the inotify process from failing to restart after configuration changes or rapid stop/start operations.
+- The shutdown process now waits for the existing inotify manager to terminate and confirms that its instance lock has been released before starting a new instance. Startup is also verified to ensure the inotify manager has successfully initialized before reporting a successful start.
+
 ## 2026.08.05
 
 This release improves support for **Unassigned Devices**, making them integrate more naturally throughout the plugin.
