@@ -4,6 +4,15 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.09.08
+
+This release fixes inotify start up issues with delayed start due to inotify watches limit calculations.
+
+### Fixes
+- Removed automatic adjustment of the system inotify watch limit. File Activity now uses the system-configured limit and reports when insufficient watches are available so the user can adjust the setting as needed.
+- Improved detection and reporting of inotify startup and runtime failures, including inotify watch limit exhaustion.
+- Added controlled recovery when the inotify process terminates unexpectedly, while preventing repeated restart attempts when the underlying failure persists.
+
 ## 2026.09.01
 
 This release fixes a File Activity inotify restart race condition.

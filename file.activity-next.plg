@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.09.01">
+<!ENTITY version	"2026.09.08">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"da16ac099818188692a974d3c3ea7e1e">
+<!ENTITY MD5		"619abb7266c5d5738cfbe06300af8910">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,14 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Improve File Activity inotify startup, shutdown, and restart reliability.
+- Fix: Prevent multiple File Activity inotify manager instances from running simultaneously.
+- Fix: Improve detection and handling of inotifywait startup and unexpected termination failures.
+- Fix: Prevent repeated inotify recovery attempts when inotifywait cannot recover from an error.
+- Fix: Improve File Activity inotify error logging to report the cause of startup and recovery failures.
+- Rem: Remove the inotify watches limit check.  Use the default inotify watches and log a message that there are not enough inotify watches so user can take action to correct.
+
+###2026.09.01
 - Fix: File Activity inotify could fail to restart after configuration changes or rapid stop/start operations.
 
 ###2026.08.05
