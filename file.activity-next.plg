@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.09.08">
+<!ENTITY version	"2026.10.25">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"619abb7266c5d5738cfbe06300af8910">
+<!ENTITY MD5		"ddd3366c5a2e03588e3c8d645f4dc5e0">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,9 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Retry File Activity inotify after a failed configuration reload, allowing transient mount or unmount changes to settle before rebuilding the watch list.
+
+###2026.09.08
 - Fix: Improve File Activity inotify startup, shutdown, and restart reliability.
 - Fix: Prevent multiple File Activity inotify manager instances from running simultaneously.
 - Fix: Improve detection and handling of inotifywait startup and unexpected termination failures.
