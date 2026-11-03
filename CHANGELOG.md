@@ -6,13 +6,10 @@ Development of the plugin will continue with ongoing fixes, enhancements, and ma
 
 ## 2026.11.03
 
-### Fixes
-- Validate the plugin bundle before stopping File Activity or removing installed files.
-- Report bundle extraction failures.
-- Preserve the current plugin bundle when removing older bundles.
-- Wait for pending startup before stopping File Activity.
-- Report shutdown failures and abort installation, updates, or removal when shutdown fails.
-- Replace `at` scheduling with direct startup while retaining the 30-second delay.
+### Improved
+- Improve installation validation, extraction failure handling, and bundle cleanup.
+- Improve startup and shutdown coordination, preventing installation, updates, or removal after a failed shutdown.
+- Replace `at` scheduling with direct delayed startup.
 
 ## 2026.10.25
 
