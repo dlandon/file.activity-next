@@ -4,8 +4,19 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.11.03
+
+### Fixes
+- Validate the plugin bundle before stopping File Activity or removing installed files.
+- Report bundle extraction failures.
+- Preserve the current plugin bundle when removing older bundles.
+- Wait for pending startup before stopping File Activity.
+- Report shutdown failures and abort installation, updates, or removal when shutdown fails.
+- Replace `at` scheduling with direct startup while retaining the 30-second delay.
+
 ## 2026.10.25
 
+### Improved
 - Retry File Activity inotify after a failed configuration reload.
 
 ## 2026.09.08

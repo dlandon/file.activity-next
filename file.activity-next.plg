@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.10.25">
+<!ENTITY version	"2026.11.03">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"ddd3366c5a2e03588e3c8d645f4dc5e0">
+<!ENTITY MD5		"4c9dba27c8e04ad11c2068b188c3150b">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,14 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Validate the plugin bundle before stopping File Activity or removing installed files.
+- Fix: Report bundle extraction failures and abort installation.
+- Fix: Improve old bundle cleanup to preserve the exact current bundle.
+- Fix: Wait for pending startup before stopping File Activity.
+- Fix: Report shutdown failures and abort installation, removal, or update when stopping fails.
+- Fix: Replace 'at' startup scheduling with direct startup event execution, retaining the 30-second delay.
+
+###2026.10.25
 - Fix: Retry File Activity inotify after a failed configuration reload, allowing transient mount or unmount changes to settle before rebuilding the watch list.
 
 ###2026.09.08
@@ -42,7 +50,7 @@
 - Fix: Unassigned Device with spaces in the share name (Mountpoint) were not added to File Activity.
 - Fix: Unassigned Devices shares not showing correctly on the Shares page.
 
-##2026.07.24
+###2026.07.24
 - Fix: Do not complete a reload request if the File Activity is stopped.
 - Add: Advanced log filtering to the Share Activity and Disk Activity pages.
 - Add: "Hide attributes" option to suppress ATTRIB events.
@@ -51,8 +59,6 @@
 
 ###2026.06.21
 - Fix: When changing an Unraid share, the File Activity would be started if it was not running.  It is supposed to update, but not start if stopped.
-
-###2026.06.21
 - Fix: During array shutdown, the heavy UD unmounting activity would get into a timing issue where a folder to monitor by inotify could go unavailable.  Inotify is restarted to fix this issue.
 
 ###2026.06.06
@@ -75,7 +81,7 @@
 - Fix: Situation where logging stopped and File Activity would not restart.
 - Fix: Show when File Activity is running but logging has stopped.
 
-###2016.03.22
+###2026.03.22
 - Fix: Align plugin name with other Next plugins.
 - Fix: Shares with spaces are not excluded properly.
 - Fix: Improve inotify error reporting and refactor for robustness.
@@ -98,13 +104,13 @@
 - Fix: Cache and Pools not showing in Share file activity.
 - Fix: Rework fifo handling and check for enough watches in inotify.file.activity script.
 
-###2025.01.14
+###2026.01.14
 - Fix: Reversion that broke logging.
 
-###2025.01.13a
+###2026.01.13a
 - Fix: Update check for file activity next.
 
-###2026.01.13a
+###2026.01.13
 - Add: Mark deleted files as 'DELETE_RECYCLED' when recycled by the Recycle Bin, and 'DELETE_RAW' when deleted and not added to the Recycle Bin.  This can help understand if the Recycle Bin is working.
 - Add: List of Disks and Pools being monitored on the Settings page.
 - Add: Filter switch to show only today's activity on 'Share Activity' and 'Disk and Pool Activity' pages.
@@ -119,10 +125,8 @@
 - Fix: Inotify include and exlude fixes for proper inotify operation.
 - Fix: Default max log lines to 5000 and not 2000.
 
-###12.05.2025
-- First release as File Activity - Next.
-
 ###2025.12.05
+- First release as File Activity - Next.
 - Initial release.
 </CHANGES>
 
@@ -169,11 +173,25 @@ exit 1
 fi
 
 #
+# Validate the bundle before changing the installed plugin.
+#
+
+if ! tar -tf "/boot/config/plugins/&plugin;/&name;-&version;.tgz" >/dev/null 2>&amp;1; then
+	echo "ERROR: &name; bundle is missing or invalid. Installation aborted."
+	exit 1
+fi
+
+#
 # Stop file activity if it is running.
 #
 echo "Stopping File Activity..."
 
-/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin; stop 2>/dev/null
+if [ -x "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" ]; then
+	if ! "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" stop; then
+		echo "ERROR: Unable to stop File Activity. Installation aborted."
+		exit 1
+	fi
+fi
 
 #
 # Remove emhttp files so we can re-install.
@@ -183,7 +201,11 @@ rm -rf /usr/local/emhttp/plugins/&plugin;/* 2>/dev/null
 #
 # Remove old 'bundle' files.
 #
-rm -f $(ls /boot/config/plugins/&plugin;/&name;*.tgz 2>/dev/null | grep -v '&version;')
+for bundle in /boot/config/plugins/&plugin;/&name;*.tgz; do
+	if [[ -f "$bundle" &amp;&amp; "$bundle" != "/boot/config/plugins/&plugin;/&name;-&version;.tgz" ]]; then
+		rm -f -- "$bundle"
+	fi
+done
 </INLINE>
 </FILE>
 
@@ -200,7 +222,10 @@ mkdir -p /boot/config/plugins/&plugin; 2>/dev/null
 #
 # Install the 'bundle'.
 #
-tar -xf /boot/config/plugins/&plugin;/&name;-&version;.tgz -C /usr/local/emhttp/plugins 2>/dev/null
+if ! tar -xf "/boot/config/plugins/&plugin;/&name;-&version;.tgz" -C /usr/local/emhttp/plugins; then
+	echo "ERROR: Unable to extract &name; bundle. Installation aborted."
+	exit 1
+fi
 </INLINE>
 </FILE>
 
@@ -234,7 +259,13 @@ mkdir -p /tmp/&plugin;
 #
 echo "Starting File Activity..."
 
-at -f "/usr/local/emhttp/plugins/&plugin;/event/started" "now" 2>/dev/null
+#
+# Run the startup event. It backgrounds the delayed service start.
+#
+if ! /bin/bash "/usr/local/emhttp/plugins/&plugin;/event/started"; then
+	echo "ERROR: &name; files are installed, but the startup event failed."
+	exit 1
+fi
 
 echo ""
 echo "-----------------------------------------------------------"
@@ -254,7 +285,14 @@ The 'remove' script.
 #
 # Stop file activity.
 #
-/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin; stop 2>/dev/null
+echo "Stopping File Activity..."
+
+if [ -x "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" ]; then
+	if ! "/usr/local/emhttp/plugins/&plugin;/scripts/rc.&plugin;" stop; then
+		echo "ERROR: Unable to stop File Activity. Removal aborted."
+		exit 1
+	fi
+fi
 
 #
 # Remove all plugin files.
