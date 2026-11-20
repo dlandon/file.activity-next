@@ -4,6 +4,19 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.11.20
+
+### Improved
+- Replace the Exclude Shares text field with a checklist of current Unraid shares. Preselect saved exclusions and warn when all shares are excluded.
+- Show "Setting up watches…" while inotify initializes and report completion in syslog.
+- Create the activity log at startup if it is missing.
+- Improve share exclusions so they continue to apply as shares expand to other monitored disks and pools.
+
+### Fixed
+- Prevent stale watch status after restarting or stopping inotify.
+- Handle unexpected inotify termination so File Activity does not report a stopped watcher as running.
+- Match excluded share paths at directory boundaries so similarly named shares remain monitored.
+
 ## 2026.11.03
 
 ### Improved

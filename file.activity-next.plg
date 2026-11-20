@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.11.03">
+<!ENTITY version	"2026.11.20">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"4c9dba27c8e04ad11c2068b188c3150b">
+<!ENTITY MD5		"88194fa0e3f2b33facf66225f162e29d">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,19 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Replace the Exclude Shares text field with a checklist populated from Unraid's share list.
+- Fix: Preselect saved exclusions case-insensitively and omit shares that no longer exist.
+- Fix: Warn when all available shares are excluded.
+- Fix: Create the activity log at startup while preserving existing entries.
+- Fix: Report recursive watch setup in the UI and log when watches are established.
+- Fix: Drain the previous inotify stderr reader before restarting the watcher and clean up the watch status on shutdown.
+- Fix: Handle unexpected inotify termination and match excluded share paths at directory boundaries.
+- Fix: Generate share exclusions for every monitored array disk and pool so they also apply to share directories created later. Omit `/mnt/user` and `/mnt/user0` paths.
+- Fix: Apply share exclusions across monitored array disks and pools, including where share directories are created later.
+- Fix: Remove redundant /mnt/user and /mnt/user0 paths from the exclusion list.
+- Fix: Show a warning beside Log Open File Events when enabled because it can generate a large number of log entries.
+
+###2026.11.03
 - Fix: Validate the plugin bundle before stopping File Activity or removing installed files.
 - Fix: Report bundle extraction failures and abort installation.
 - Fix: Improve old bundle cleanup to preserve the exact current bundle.
