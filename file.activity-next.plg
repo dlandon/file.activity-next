@@ -3,13 +3,13 @@
 <!ENTITY name		"file.activity-next">
 <!ENTITY plugin		"file.activity">
 <!ENTITY author		"dlandon">
-<!ENTITY version	"2026.11.20">
+<!ENTITY version	"2026.11.24">
 <!ENTITY launch		"Tools/FileActivity">
 <!ENTITY gitURL		"https://raw.githubusercontent.com/&author;/&name;/master">
 <!ENTITY tgzURL		"https://raw.githubusercontent.com/&author;/&name;/v&version;">
 <!ENTITY pluginURL	"&gitURL;/&name;.plg">
 <!ENTITY supportURL	"https://github.com/dlandon/&name;/discussions">
-<!ENTITY MD5		"88194fa0e3f2b33facf66225f162e29d">
+<!ENTITY MD5		"d5f1023998099014e4b91bb79212441c">
 ]>
 
 <PLUGIN	name="&plugin;"
@@ -24,6 +24,12 @@
 <CHANGES>
 ##&name;
 ###&version;
+- Fix: Suppress routine inotify watch messages while preserving watch setup status and errors.
+- Fix: Prevent File Activity from starting before the array is ready during boot. Retain automatic restart after plugin updates when the array is running.
+- Fix: Skip excluded share directories during recursive watch setup to reduce startup time and disk I/O.
+- Fix: Keep the Exclude Shares dropdown usable after refreshing a log tab and returning to Settings.
+
+###2026.11.20
 - Fix: Replace the Exclude Shares text field with a checklist populated from Unraid's share list.
 - Fix: Preselect saved exclusions case-insensitively and omit shares that no longer exist.
 - Fix: Warn when all available shares are excluded.
@@ -267,17 +273,22 @@ The 'post-install' script.
 #
 mkdir -p /tmp/&plugin;
 
-#
-# Start file activity.
-#
-echo "Starting File Activity..."
 
 #
-# Run the startup event. It backgrounds the delayed service start.
+# At boot, the array's started event will start File Activity.
 #
-if ! /bin/bash "/usr/local/emhttp/plugins/&plugin;/event/started"; then
-	echo "ERROR: &name; files are installed, but the startup event failed."
-	exit 1
+array_state_file="/usr/local/emhttp/state/var.ini"
+mdState=""
+if [ -r "$array_state_file" ]; then
+	. "$array_state_file"
+fi
+
+if [ "$mdState" = "STARTED" ]; then
+	echo "Starting File Activity..."
+	if ! /bin/bash "/usr/local/emhttp/plugins/&plugin;/event/started"; then
+		echo "ERROR: &name; files are installed, but the startup event failed."
+		exit 1
+	fi
 fi
 
 echo ""

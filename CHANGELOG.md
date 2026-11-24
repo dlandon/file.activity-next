@@ -4,6 +4,15 @@ The **Next** series continues development of the plugin by the original author a
 
 Development of the plugin will continue with ongoing fixes, enhancements, and maintenance improvements.
 
+## 2026.11.24
+
+### Fixes
+
+- Suppress routine inotify watch messages while preserving watch setup status and errors.
+- Wait for the array to be ready before starting File Activity at boot. Continue to restart automatically after plugin updates when the array is running.
+- Skip excluded share directories during recursive watch setup to reduce startup time and disk I/O.
+- Fix the Exclude Shares dropdown becoming unresponsive after refreshing a log tab and returning to Settings.
+
 ## 2026.11.20
 
 ### Improved
